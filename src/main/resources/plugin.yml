@@ -1,0 +1,11 @@
+name: EnderGamer
+version: '${project.version}'
+main: de.endergamer.packages.EnderMain
+api-version: 1.19
+authors: [ EnderGamer ]
+description: A Cool Minigame
+commands:
+  start:
+    description: Starte das Spiel
+  setup:
+    description: Setze diverse Einstellungen
