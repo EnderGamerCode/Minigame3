@@ -7,6 +7,7 @@ import de.endergamer.packages.countdowns.LobbyCountdown;
 import de.endergamer.packages.util.ConfigLocationUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,6 +29,7 @@ public class PlayerLobbyConnectionListener implements Listener {
             event.getPlayer().kickPlayer("Das Spiel läuft schon!");
         }
         Player player = event.getPlayer();
+        player.setGameMode(GameMode.SURVIVAL);
         instance.getPlayers().add(player);
         if(!event.getPlayer().hasPlayedBefore()){
             event.setJoinMessage(EnderMain.PREFIX + ChatColor.AQUA + "Sagt Willkommen zu " + ChatColor.GOLD + player.getDisplayName() + ChatColor.AQUA + "!");

@@ -25,12 +25,10 @@ public final class EnderMain extends JavaPlugin {
     private ArrayList<Player> players;
     private Voting voting;
     private ArrayList<Map> maps;
-    private ArrayList<Player> dead;
     @Override
     public void onEnable() {
         gameStateManager = new GameStateManager(this);
         players = new ArrayList<>();
-        dead = new ArrayList<>();
        //instance
         instance = this;
         //PluginManager
@@ -89,7 +87,4 @@ public final class EnderMain extends JavaPlugin {
         return maps;
     }
 
-    public ArrayList<Player> getDead() {
-        return dead;
-    }
 }

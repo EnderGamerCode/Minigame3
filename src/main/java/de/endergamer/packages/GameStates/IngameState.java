@@ -45,7 +45,7 @@ public class IngameState extends GameState{
             almostCountdown.start();
             Collections.shuffle(instance.getPlayers());
             players = instance.getPlayers();
-            dead = instance.getDead();
+
             map = instance.getVoting().getWinnerMap();
             map.load();
             for (int i = 0; i < players.size(); i++)
@@ -61,17 +61,9 @@ public class IngameState extends GameState{
 
     @Override
     public void stop() {
-        FileConfiguration configuration = instance.getConfig();
-        for (Player current: players){
-            World world = Bukkit.getWorld(configuration.getString("world"));
-            double x = configuration.getDouble( "Lobby.X"),
-                    y = configuration.getDouble( "Lobby.Y"),
-                    z = configuration.getDouble("Lobby.Z");
-            float yaw = (float) configuration.getDouble( "Lobby.Yaw"),
-                    pitch = (float) configuration.getDouble( "Lobby.Pitch");
-            current.teleport(new Location(world,x,y,z,yaw,pitch));
-            instance.getGameStateManager().setGameState(GameState.LOBBY_STATE);
-            new LobbyState(instance.getGameStateManager()).start();
-        }
+        instance.getGameStateManager().setGameState(GameState.ENDING_STATE);
+        EndingState endingState = new EndingState(instance);
+        endingState.start();
+
     }
 }
